@@ -1,46 +1,79 @@
-var quizContainer = document.getElementById('quiz');
-var resutsContiner = document.getElementById('results');
-var submitButton = document.getElementById('submit');
-var myQuestions = [
-    {
-      question: "Who won the first SuperBowl?",
-      answers: {
-        a: "Kansas City Chiefs",
-        b: "Chicago Bears",
-        c: "Green Bay Packers"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "Who has the most touchdowns thrown in NFL history?",
-      answers: {
-        a: "",
-        b: "",
-        c: ""
-      },
-      correctAnswer: ""
-    },
-    {
-      question: "How many players are on a NFL roster?",
-      answers: {
-        a: "",
-        b: "j",
-        c: "",
-        d: ""
-      },
-      correctAnswer: "d"
-    }
-];
 
-function buildQuiz(){
-    var output = [];
+// Applying a theme to the survey
+Survey
+    .StylesManager
+    .applyTheme("winter");
 
-    myQuestions.forEach
-}
+// Defining the survey format
+var json = {
+    title: "SuperBowl Quiz",
+    showProgressBar: "bottom",
+    showTimerPanel: "top",
+    maxTimeToFinishPage: 15,
+    maxTimeToFinish: 45,
+    firstPageIsStarted: true,
+    startSurveyText: "Start Quiz",
+    pages: [
+        {
+            questions: [
+                {
+                    type: "html",
+                    html: "You are about to start quiz. <br/>You have 15 seconds for every page and 45 seconds for the whole survey of 3 questions.<br/>Please click on <b>'Start Quiz'</b> button when you are ready."
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "civilwar",
+                    title: "When was the Civil War?",
+                    choices: [
+                        "1750-1800", "1800-1850", "1850-1900", "1900-1950", "after 1950"
+                    ],
+                    correctAnswer: "1850-1900"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "libertyordeath",
+                    title: "Who said 'Give me liberty or give me death?'",
+                    choicesOrder: "random",
+                    choices: [
+                        "John Hancock", "James Madison", "Patrick Henry", "Samuel Adams"
+                    ],
+                    correctAnswer: "Patrick Henry"
+                }
+            ]
+        }, {
+            maxTimeToFinish: 15,
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "magnacarta",
+                    title: "What is the Magna Carta?",
+                    choicesOrder: "random",
+                    choices: [
+                        "The foundation of the British parliamentary system", "The Great Seal of the monarchs of England", "The French Declaration of the Rights of Man", "The charter signed by the Pilgrims on the Mayflower"
+                    ],
+                    correctAnswer: "The foundation of the British parliamentary system"
+                }
+            ]
+        }
+    ],
+    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
+};
 
-function showResults(){}
+window.survey = new Survey.Model(json);
 
-buildQuiz();
+survey
+    .onComplete
+    .add(function (result) {
+        document
+            .querySelector('#surveyResult')
+            .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+    });
 
-submitButton.addEventListener('click' , showResults);
+$("#surveyElement").Survey({model: survey});
 
