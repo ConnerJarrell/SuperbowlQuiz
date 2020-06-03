@@ -5,6 +5,9 @@ Survey
     .applyTheme("winter");
 
 // Defining the survey format
+
+var finalScore = document.getElementById('finalScore')
+
 var json = {
     title: "SuperBowl Quiz",
     showProgressBar: "bottom",
@@ -25,25 +28,25 @@ var json = {
             questions: [
                 {
                     type: "radiogroup",
-                    name: "civilwar",
-                    title: "When was the Civil War?",
+                    name: "Championship",
+                    title: "Who won the first SuperBowl?",
                     choices: [
-                        "1750-1800", "1800-1850", "1850-1900", "1900-1950", "after 1950"
+                        "Kansas City Chiefs", "Chicago Bears", "Green Bay Packers", "Detroit Lions"
                     ],
-                    correctAnswer: "1850-1900"
+                    correctAnswer: "Green Bay Packers"
                 }
             ]
         }, {
             questions: [
                 {
                     type: "radiogroup",
-                    name: "libertyordeath",
-                    title: "Who said 'Give me liberty or give me death?'",
+                    name: "Touchdowns",
+                    title: "Who has the most touchdowns thrown in NFL history?",
                     choicesOrder: "random",
                     choices: [
-                        "John Hancock", "James Madison", "Patrick Henry", "Samuel Adams"
+                        "Dan Marino", "Peyton Manning", "Drew Brees", "Tom Brady"
                     ],
-                    correctAnswer: "Patrick Henry"
+                    correctAnswer: "Drew Brees"
                 }
             ]
         }, {
@@ -51,19 +54,21 @@ var json = {
             questions: [
                 {
                     type: "radiogroup",
-                    name: "magnacarta",
-                    title: "What is the Magna Carta?",
+                    name: "Players",
+                    title: "How many players are on a NFL roster?",
                     choicesOrder: "random",
                     choices: [
-                        "The foundation of the British parliamentary system", "The Great Seal of the monarchs of England", "The French Declaration of the Rights of Man", "The charter signed by the Pilgrims on the Mayflower"
+                        "52", "48", "38", "45"
                     ],
-                    correctAnswer: "The foundation of the British parliamentary system"
+                    correctAnswer: "52"
                 }
             ]
         }
     ],
     completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
+
 };
+
 
 window.survey = new Survey.Model(json);
 

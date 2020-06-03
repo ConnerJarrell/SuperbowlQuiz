@@ -9,8 +9,17 @@
     <title>Superbowl Quiz</title>
 </head>
 <body>
-    <div id="surveyElement" style="display:inline-block;width:100%;"></div>
-    <div id="surveyResult"></div>
+    <div class="quizContainer">
+        <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+        <div id="surveyResult"></div>
+        <div id="finalScore">
+            <form id="score-form" method="POST">
+                <label for="score-text">Record Score</label>
+                <input type="text" placeholder="Enter Intials" name="score-text" id="score-text" /> 
+                <input type = "button" value = "Submit" id ="submitIntials"/>
+            </form>
+        </div>
+    </div>
 
 
 
