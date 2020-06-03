@@ -9,3 +9,4 @@ I started off with code very similiar to most people in the class and switched i
 I am now using a quiz format similiar to using bootstrap almost.
 
 Still needs work on coding how to submit your Name and log for scores.
+
