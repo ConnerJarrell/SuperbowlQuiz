@@ -17,7 +17,8 @@ var json = {
     firstPageIsStarted: true,
     startSurveyText: "Start Quiz",
     pages: [
-        {
+        {   
+            // Start Page 
             questions: [
                 {
                     type: "html",
@@ -25,6 +26,7 @@ var json = {
                 }
             ]
         }, {
+            // Laying out the question
             questions: [
                 {
                     type: "radiogroup",
