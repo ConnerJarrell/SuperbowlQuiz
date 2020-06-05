@@ -80,6 +80,7 @@ survey
         document
             .querySelector('#surveyResult')
             .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+            $("#score-form").attr("style" , "display:block");
     });
 
 $("#surveyElement").Survey({model: survey});
